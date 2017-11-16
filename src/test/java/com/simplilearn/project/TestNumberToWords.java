@@ -1,73 +1,62 @@
 package com.simplilearn.project;
 
-import static org.junit.Assert.*;
-
-import java.text.NumberFormat;
 
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
 import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class TestNumberToWords extends TestCase{
 	
-	@BeforeClass
-    public static void runOnceBeforeClass() {
-        System.out.println("@BeforeClass - runOnceBeforeClass");
+	private NumberToWords numberWords ;
+
+
+    public TestNumberToWords() {
+       numberWords = new NumberToWords() ;
     }
 	
-	/**
-    * @return the suite of tests being tested
-    */
-   public static TestSuite suite()
-   {
-       return new TestSuite( TestNumberToWords.class );
-   }
-
 	
 	@Test
 	public void testNegative() {
 		int number = -10;
-		String sNumber = NumberToWords.convert(number);
-//		System.out.println(NumberFormat.getInstance().format(number) + "='" + sNumber + "'");
-		assertTrue(sNumber.equalsIgnoreCase("Minus Ten"));
+		String numName="Minus Ten";
+		String msg = numberWords.convert(number);
+		Assert.assertEquals( numName, numName, msg) ;
 	}
 	
 	@Test
 	public void testTens() {
 		int number = 79;
-		String sNumber = NumberToWords.convert(number);
-		assertTrue(sNumber.equalsIgnoreCase("Seventy Nine"));
+		String numName="Seventy Nine";
+		Assert.assertEquals( numName, numName, numberWords.convert(number) ) ;
 	}
-
+	
 	@Test
 	public void testHundred() {
 		int number = 145;
-		String sNumber = NumberToWords.convert(number);
-		assertTrue(sNumber.equalsIgnoreCase("One Hundred Forty Five"));		
+		String numName="One Hundred Forty Five";
+		Assert.assertEquals( numName, numName, numberWords.convert(number) ) ;
 	}
 	
 	@Test
 	public void testThousand() {
 		int number = 1245;
-		String sNumber = NumberToWords.convert(number);
-		assertTrue(sNumber.equalsIgnoreCase("One Thousand Two Hundred Forty Five"));	
+		String numName="One Thousand Two Hundred Forty Five";
+		Assert.assertEquals(numName , numName, numberWords.convert(number) ) ;
 	}
 	
 	@Test
 	public void testLakhs() {
 		int number = 100002;
-		String sNumber = NumberToWords.convert(number);
-		assertTrue(sNumber.equalsIgnoreCase("One Lakh Two"));	
+		String numName="One Lakh Two";
+		Assert.assertEquals(numName, numName, numberWords.convert(number) ) ;
 	}
 	
 	@Test
 	public void testCrores() {
 		int number = 53231234;
-		String sNumber = NumberToWords.convert(number);
-		assertTrue(sNumber.equalsIgnoreCase("Five Crore Thirty Two Lakh Thirty One Thousand Two Hundred Thirty Four"));	
+		String numName = "Five Crore Thirty Two Lakh Thirty One Thousand Two Hundred Thirty Four";
+		Assert.assertEquals( numName, numName, numberWords.convert(number) ) ;
 	}
 
 	// Run once, e.g close connection, cleanup
@@ -75,4 +64,5 @@ public class TestNumberToWords extends TestCase{
     public static void runOnceAfterClass() {
         System.out.println("@AfterClass - runOnceAfterClass");
     }
+    
 }

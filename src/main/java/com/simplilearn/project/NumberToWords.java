@@ -1,6 +1,7 @@
 package com.simplilearn.project;
 
 import java.text.NumberFormat;
+import java.util.Scanner;
 
 public class NumberToWords {
 
@@ -22,7 +23,7 @@ public class NumberToWords {
 			"Ninety" 	// 9
 	};
 
-	public static String convert(final int n) {
+	public String convert(final int n) {
 		if (n < 0) {
 			return "Minus " + convert(-n);
 		}
@@ -48,37 +49,5 @@ public class NumberToWords {
 		}
 
 		return convert(n / 10000000) + " Crore" + ((n % 10000000 != 0) ? " " : "") + convert(n % 10000000);
-	}
-
-	public static void main(final String[] args) {
-
-		int n;
-
-		n = -5;
-		System.out.println(NumberFormat.getInstance().format(n) + "='" + convert(n) + "'");
-
-		n = 16;
-		System.out.println(NumberFormat.getInstance().format(n) + "='" + convert(n) + "'");
-
-		n = 50;
-		System.out.println(NumberFormat.getInstance().format(n) + "='" + convert(n) + "'");
-
-		n = 78;
-		System.out.println(NumberFormat.getInstance().format(n) + "='" + convert(n) + "'");
-
-		n = 456;
-		System.out.println(NumberFormat.getInstance().format(n) + "='" + convert(n) + "'");
-
-		n = 1000;
-		System.out.println(NumberFormat.getInstance().format(n) + "='" + convert(n) + "'");
-
-		n = 99999;
-		System.out.println(NumberFormat.getInstance().format(n) + "='" + convert(n) + "'");
-
-		n = 199099;
-		System.out.println(NumberFormat.getInstance().format(n) + "='" + convert(n) + "'");
-
-		n = 10005000;
-		System.out.println(NumberFormat.getInstance().format(n) + "='" + convert(n) + "'");
 	}
 }
